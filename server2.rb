@@ -1,6 +1,6 @@
 require 'socket'                # Get sockets from stdlib
 
-server = TCPServer.open('0.0.0.0', 2000)   # Socket to listen on port 2000
+server = TCPServer.open('0.0.0.0', 2000)   # Socket to listen on all interaces at port 2000
 loop {                          # Servers run forever
   Thread.start(server.accept) do |client|
 	puts "Accepted connection from #{client.peeraddr}"
