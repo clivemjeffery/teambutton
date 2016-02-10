@@ -1,6 +1,6 @@
 require 'socket'      # Sockets are in standard library
 
-hostname = 'ICT-WIN7-13.school.norton-pri.n-yorks.sch.uk'
+hostname = '172.23.56.86' # my PC at school -> move to setting or argument
 port = 2000
 
 s = TCPSocket.open(hostname, port)
