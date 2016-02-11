@@ -1,9 +1,10 @@
+# Usage: ruby client3.rb host port team
+
 require 'socket'      # Sockets are in standard library
 
-# hostname = '172.23.56.86' # my PC at school -> move to setting or argument
-hostname = 'localhost'
-port = 2000
-team = ARGV[0]
+hostname = ARGV[0]
+port = ARGV[1]
+team = ARGV[2]
 
 s = TCPSocket.open(hostname, port)
 s.puts team # send team name 
