@@ -2,20 +2,36 @@
 
 require 'socket'      # Sockets are in standard library
 
-Shoes.app do
+Shoes.app(title: "TeamButton") do
 
-	hostname = "172.23.56.86" # ARGV[0]
+	hostname = "192.168.1.64" # ARGV[0]
 	port = 2000 # ARGV[1]
 	team = "shoes" # ARGV[2]
 	
-	@hostedit = edit_line
-	@hostedit.text = hostname
-	@portedit = edit_line
-	@portedit.text = port
-	@teamedit = edit_line
-	@teamedit.text = team
-	
-	@connect_button = button "Connect"
+	stack {
+		caption "Connection"
+		flow {
+			inscription "Hostname :", :width => 500, stroke: red
+			@hostedit = edit_line
+			@hostedit.text = hostname
+		}
+		flow {
+			inscription "Port number: "
+			@portedit = edit_line
+			@portedit.text = port
+		}
+		flow {
+			inscription "Team name:"
+			@teamedit = edit_line
+			@teamedit.text = team
+		}
+	}
+
+	stack {
+		@connect_button = button "Connect"
+		@team_button = button "We know!", :height => 300
+	}
+
 	@connect_button.click {
 
 		@info = para "Setting up..."
@@ -25,10 +41,9 @@ Shoes.app do
 		@s.puts @teamedit.text # send team name 
 
 		handshake = @s.gets # receive handshake
-		title handshake
+		para handshake
 	}
 
-	@team_button = button "We know!"
 	@team_button.click {
 		@s.puts team
 	}
