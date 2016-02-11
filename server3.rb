@@ -15,7 +15,7 @@ loop {                          # Servers run forever
 	client.flush
 	while echo_team = client.gets 
 		hit_time = Time.now
-		puts "#{echo_team.strip} hit their button in thread for #{team} at #{hit_time.strftime('%H:%M:%S.%L')}."
+		puts "#{hit_time.strftime('%H:%M:%S.%L')} #{team}"
 	end
 	puts "#{team} has disconnected."
 	client.close                # Disconnect from the client
